@@ -105,7 +105,7 @@ industrial automation and control.
     monitoring system, ensuring quick detection and response to
     hazardous conditions.
 
-#### Industrial Control Systems {#industrial-control-systems .unnumbered}
+#### Industrial Control Systems 
 
 I2C is used extensively in industrial control systems to enable
 efficient communication between modules and controllers.
@@ -123,7 +123,7 @@ efficient communication between modules and controllers.
     to control units in industrial equipment, allowing real-time system
     visualization and updates for operators.
 
-#### Data Acquisition Systems {#data-acquisition-systems .unnumbered}
+#### Data Acquisition Systems 
 
 Data acquisition, crucial in industrial quality control and process
 monitoring, benefits from I2C's ability to connect multiple sensors or
@@ -138,7 +138,7 @@ data modules to a single controller with minimal wiring.
     monitoring environments in factories or energy usage in power
     plants.
 
-#### Industrial Communication and Diagnostics {#industrial-communication-and-diagnostics .unnumbered}
+#### Industrial Communication and Diagnostics 
 
 I2C supports diagnostic applications in industrial systems, allowing
 engineers to monitor and troubleshoot components.
@@ -151,7 +151,7 @@ engineers to monitor and troubleshoot components.
     and recalibration by interfacing with memory chips that store
     configuration and calibration data for industrial devices.
 
-#### Battery-Operated and Low-Power Industrial Devices {#battery-operated-and-low-power-industrial-devices .unnumbered}
+#### Battery-Operated and Low-Power Industrial Devices
 
 In remote or battery-operated equipment, where low power is essential,
 I2C's efficiency makes it ideal.
