@@ -499,7 +499,7 @@ complex data transactions.
 
 ### C0d3
 
-``` {#lst:i2c_master .verilog language="Verilog" caption="I2C Master Module in Verilog" label="lst:i2c_master"}
+```verilog
 `timescale 1ns / 1ps
 
 // Main module declaration
@@ -861,7 +861,7 @@ the I2C protocol.
 
 ### C0d3
 
-``` {#lst:i2c_slave .verilog language="Verilog" caption="I2C Slave Module in Verilog" label="lst:i2c_slave"}
+```verilog
 module i2c_slave(
     input [6:0] addr_in,   // Slave address to respond to (dynamic address input)
     inout sda,             // I2C data line (SDA) - bidirectional
@@ -1154,7 +1154,7 @@ process.
 
 ### C0d3
 
-``` {#lst:top_module .verilog language="Verilog" caption="Top Module for Integrating I2C Master and Slave" label="lst:top_module"}
+```verilog
 `timescale 1ns / 1ps
 
 // Top module to integrate i2c_master and i2c_slave
@@ -1215,7 +1215,7 @@ endmodule
 
 ### C0d3
 
-``` {#lst:testbench_module .verilog language="Verilog" caption="Testbench Module for Top Module" label="lst:testbench_module"}
+```verilog
 `timescale 1ns / 1ps
 
 module i2c_controller_tb();
