@@ -1398,7 +1398,7 @@ endmodule
     `$finish`.
 
 # Results
-
+## Test Case 1: Address Match with Write Operation
 <figure>
 <span class="image placeholder"
 data-original-image-src="TEST-CASE-1.jpg" data-original-image-title=""
@@ -1412,6 +1412,7 @@ width="\textwidth"></span>
   <br>
 </p>
 
+The waveform in this test shows the master sending an address 7'b0101010, which matches the slave’s configured address. Since the address matches, the slave acknowledges the communication by sending an ACK (acknowledgment) signal. After receiving the ACK, the master initiates a write operation, transmitting the data 8'b10101010 to the slave. The enable signal is set to initiate communication and deasserted after a delay, allowing the transmission to complete. The presence of the ACK in this waveform confirms that the address was successfully matched, allowing data transfer.
 
 <figure>
 <span class="image placeholder"
@@ -1420,12 +1421,16 @@ width="\textwidth"></span>
 <figcaption>Test Case 2</figcaption>
 </figure>
 
+## Test Case 2: Address Mismatch with Write Operation (Expect NACK)
+
 <p align="center">
   <br>
   <img src="tex-supp-files/TEST-CASE-2.jpg" alt="Test Case 2">
   <br>
 </p>
 
+
+In this test case, the master sends a non-matching address 7'b1111111, which does not correspond to the slave’s preset address. The waveform shows the absence of an acknowledgment signal (NACK) from the slave, indicating that the address verification failed and the data transfer cannot proceed. This NACK response is expected behavior when the slave does not recognize the transmitted address. The enable signal initiates the communication, but with no matching address and no ACK received, data transfer is not established.
 
 <figure>
 <span class="image placeholder"
@@ -1434,11 +1439,15 @@ width="\textwidth"></span>
 <figcaption>Test Case 3</figcaption>
 </figure>
 
+## Test Case 3: Address Match with Read Operation
+
 <p align="center">
   <br>
   <img src="tex-supp-files/TEST-CASE-3.jpg" alt="Test Case 3">
   <br>
 </p>
+
+The final waveform demonstrates a read operation with the master sending a matching address 7'b0101010. Upon recognizing the address, the slave responds with an ACK signal, confirming the communication link. Following the acknowledgment, the master initiates a read operation, and the slave provides the preloaded data 8'b11001100 to the master. The enable signal triggers the start of communication and is deasserted after a delay, allowing the master to read the data. This successful transmission and receipt of data verify correct read functionality with an address match.
 
 
 # Challenges and Risk Analysis
