@@ -21,6 +21,83 @@
 </p>
 
 
+# Table of Contents
+
+- [Overview](#overview)
+  - [Project Abstract](#project-abstract)
+  - [Background and Motivation](#background-and-motivation)
+
+- [Project Proposal](#project-proposal)
+  - [Project Description](#project-description)
+
+- [Intro to Inter-Integrated Circuit Protocol](#intro-to-inter-integrated-circuit-protocol)
+  - [Comparison with Other Communication Protocols](#comparison-with-other-communication-protocols)
+
+- [Industrial Applications of I²C Protocol](#industrial-applications-of-i2c-protocol)
+  - [Sensor Integration and Monitoring](#sensor-integration-and-monitoring)
+  - [Industrial Control Systems](#industrial-control-systems)
+  - [Data Acquisition Systems](#data-acquisition-systems)
+  - [Industrial Communication and Diagnostics](#industrial-communication-and-diagnostics)
+  - [Battery-Operated and Low-Power Industrial Devices](#battery-operated-and-low-power-industrial-devices)
+
+- [Physical Layer](#physical-layer)
+  - [Two-Wire Communication](#two-wire-communication)
+  - [Open-Drain Connection](#open-drain-connection)
+  - [I2C Protocol](#i2c-protocol)
+
+- [Module Specifications](#module-specifications)
+
+- [MASTER MODULE](#master-module)
+  - [Code](#c0d3)
+  - [Explanation](#explanation)
+    - [Module Declaration](#module-declaration)
+    - [State Machine Definition](#state-machine-definition)
+    - [Clock Divider](#clock-divider)
+    - [SDA and SCL Control](#sda-and-scl-control)
+    - [Finite State Machine (FSM)](#finite-state-machine-fsm)
+    - [SDA Output Logic](#sda-output-logic)
+
+- [SLAVE MODULE](#slave-module)
+  - [Code](#c0d3-1)
+  - [Explanation](#explanation-1)
+    - [Module Declaration](#module-declaration-1)
+    - [State Machine Definition](#state-machine-definition-1)
+    - [Internal Registers and Signals](#internal-registers-and-signals)
+    - [SDA Line Control](#sda-line-control)
+    - [Start and Stop Condition Detection](#start-and-stop-condition-detection)
+    - [FSM Logic for Data Transfer](#fsm-logic-for-data-transfer)
+    - [SDA Output Logic](#sda-output-logic-1)
+  - [Summary](#summary)
+
+- [TOP-LEVEL MODULE](#top-level-module)
+  - [Code](#c0d3-2)
+  - [Explanation](#explanation-2)
+
+- [TESTBENCH MODULE](#testbench-module)
+  - [Code](#c0d3-3)
+  - [Explanation](#explanation-3)
+  - [Results](#results)
+
+- [Challenges and Risk Analysis](#challenges-and-risk-analysis)
+  - [Potential Issues and Solutions](#potential-issues-and-solutions)
+  - [Risk Management](#risk-management)
+
+- [Team Contributions and Work Distribution](#team-contributions-and-work-distribution)
+  - [Role of Each Team Member](#role-of-each-team-member)
+
+- [Individual Contributions](#individual-contributions)
+  - [Jagadeesh’s Contribution](#jagadeeshs-contribution)
+  - [Yasaswi’s Contribution](#yasaswis-contribution)
+
+- [Future Work and Improvements](#future-work-and-improvements)
+  - [Suggested Enhancements](#suggested-enhancements)
+  - [Alternative Designs](#alternative-designs)
+
+- [Appendices](#appendices)
+  - [Verilog Code Listings](#verilog-code-listings)
+  - [References](#references)
+
+
 
 # Overview
 
@@ -74,7 +151,7 @@ design.
 
 ### Comparison with Other Communication Protocols
 
-### Industrial Applications ofI2C Protocol
+### Industrial Applications of I2C Protocol
 
 The Inter-Integrated Circuit (I2C) protocol is a widely used serial
 communication standard in industrial environments, valued for its
@@ -83,7 +160,7 @@ ideal for short-distance communication and low-power applications,
 making it well-suited for industrial settings. Key industrial
 applications ofI2C are outlined below.
 
-#### Sensor Integration and Monitoring {#sensor-integration-and-monitoring .unnumbered}
+#### Sensor Integration and Monitoring
 
 I2C is commonly used to connect various sensors to a central processor
 or microcontroller, enabling real-time data acquisition essential for
@@ -1445,7 +1522,7 @@ allowing us to make steady progress:
 
 ## Individual Contributions
 
-### Jagadeesh's Contribution {#jagadeeshs-contribution .unnumbered}
+### Jagadeesh's Contribution
 
 In this project, I focused on implementing the clock stretching
 functionality and troubleshooting timing issues in data frame read
@@ -1457,7 +1534,7 @@ protocol. Despite progress, some discrepancies remained in the data
 frame during read operations, which we plan to improve upon in future
 versions.
 
-### Yasaswi's Contribution {#yasaswis-contribution .unnumbered}
+### Yasaswi's Contribution
 
 My work on the project included implementing ACK/NACK flags to handle
 erroneous addresses, refining the FSM logic, and attempting a
