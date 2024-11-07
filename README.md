@@ -1,11 +1,6 @@
 <h1 align="center">Verilog Implementation of I2C Protocol</h1>
 
-<p align="center">
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS0KPDwC9pNGXLXbLofwe9Ba1vtu5-ayFlag&s" alt="National Institute of Technology Calicut Logo"><br>
-  <strong>National Institute of Technology Calicut</strong>
-</p>
 
----
 
 <p align="center">
   Dr. <strong>Ashutosh Mishra</strong><br> 
@@ -202,10 +197,19 @@ around 230,400 bits per second.
 
 <figure id="fig:uart_block_diagram">
 <span class="image placeholder"
-data-original-image-src="uart_block_diagram.png"
+data-original-image-src="tex-supp-files/uart_block_diagram.png"
 data-original-image-title="" width="80%"></span>
 <figcaption>Block Diagram of an Asynchronous Serial System</figcaption>
 </figure>
+
+<p align="center">
+  <br>
+  <img src="tex-supp-files/uart_block_diagram.png" alt="Block Diagram of an Asynchronous Serial System">
+  <br>
+</p>
+
+
+
 
 **Drawbacks of SPI:** The most significant limitation of the Serial
 Peripheral Interface (**SPI**) is the number of pins it requires.
@@ -231,6 +235,13 @@ data-original-image-title="" width="80%"></span>
 <figcaption>Block Diagram of an SPI System</figcaption>
 </figure>
 
+<p align="center">
+  <br>
+  <img src="tex-supp-files/spi_block_diagram.png" alt="Block Diagram of an SPI System">
+  <br>
+</p>
+
+
 **The Advantages of I2C:** I2C combines the strengths of both UART and
 SPI. It operates using just two wires, like asynchronous serial, yet
 supports communication with up to 1,008 peripheral devices. Unlike SPI,
@@ -252,6 +263,13 @@ data-original-image-title="" width="80%"></span>
 <figcaption>Block Diagram of an I2C System</figcaption>
 </figure>
 
+<p align="center">
+  <br>
+  <img src="tex-supp-files/i2c_block_diagram.png" alt="Block Diagram of an I2C System">
+  <br>
+</p>
+
+
 ## Physical layer
 
 ### Two-Wire Communication
@@ -272,6 +290,13 @@ data-original-image-src="i2c_physical_layer.png"
 data-original-image-title="" width="80%"></span>
 <figcaption>Typical I2C Implementation</figcaption>
 </figure>
+
+<p align="center">
+  <br>
+  <img src="tex-supp-files/i2c_physical_layer.png" alt="Typical I2C Implementation">
+  <br>
+</p>
+
 
 One of the main reasons that I2C is a widely adopted protocol is due to
 its requirement of only **two lines** for communication. The first line,
@@ -321,6 +346,13 @@ data-original-image-title="" width="80%"></span>
 On</figcaption>
 </figure>
 
+<p align="center">
+  <br>
+  <img src="tex-supp-files/open_drain_connection.png" alt="Open-Drain Connection Pulls Line Low When NMOS is Turned On">
+  <br>
+</p>
+
+
 To establish the voltage level of the SDA or SCL line, the NMOS
 transistor is either switched **ON** or **OFF**. When the NMOS is
 **ON**, it allows current to flow through the resistor to ground,
@@ -341,6 +373,13 @@ data-original-image-src="open_drain_off.png"
 data-original-image-title="" width="80%"></span>
 <figcaption>Open-Drain Line with NMOS Turned Off</figcaption>
 </figure>
+
+<p align="center">
+  <br>
+  <img src="tex-supp-files/open_drain_off.png" alt="Open-Drain Line with NMOS Turned Off">
+  <br>
+</p>
+
 
 The transition of the open-drain line to a high state is slower because
 the line is pulled up against the bus capacitance, rather than being
@@ -411,6 +450,14 @@ communication frames, showing both address and data frames in detail.
 data-original-image-title="" width="80%"></span>
 <figcaption>I2C Address and Data Frames</figcaption>
 </figure>
+
+
+<p align="center">
+  <br>
+  <img src="tex-supp-files/i2c_frames.png" alt="I2C Address and Data Frames">
+  <br>
+</p>
+
 
 In an I2C transaction, the controller first sends a **START condition**
 by pulling the **SDA** line low, followed by the **SCL** line. This
@@ -1289,6 +1336,13 @@ width="\textwidth"></span>
 <figcaption>Test Case 1</figcaption>
 </figure>
 
+<p align="center">
+  <br>
+  <img src="tex-supp-files/TEST-CASE-1.jpg" alt="Test Case 1">
+  <br>
+</p>
+
+
 <figure>
 <span class="image placeholder"
 data-original-image-src="TEST-CASE-2.jpg" data-original-image-title=""
@@ -1296,12 +1350,26 @@ width="\textwidth"></span>
 <figcaption>Test Case 2</figcaption>
 </figure>
 
+<p align="center">
+  <br>
+  <img src="tex-supp-files/TEST-CASE-2.jpg" alt="Test Case 2">
+  <br>
+</p>
+
+
 <figure>
 <span class="image placeholder"
 data-original-image-src="TEST-CASE-3.jpg" data-original-image-title=""
 width="\textwidth"></span>
 <figcaption>Test Case 3</figcaption>
 </figure>
+
+<p align="center">
+  <br>
+  <img src="tex-supp-files/TEST-CASE-3.jpg" alt="Test Case 3">
+  <br>
+</p>
+
 
 # Challenges and Risk Analysis
 
