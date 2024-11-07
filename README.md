@@ -82,13 +82,6 @@
   - [Potential Issues and Solutions](#potential-issues-and-solutions)
   - [Risk Management](#risk-management)
 
-- [Team Contributions and Work Distribution](#team-contributions-and-work-distribution)
-  - [Role of Each Team Member](#role-of-each-team-member)
-
-- [Individual Contributions](#individual-contributions)
-  - [Jagadeesh’s Contribution](#jagadeeshs-contribution)
-  - [Yasaswi’s Contribution](#yasaswis-contribution)
-
 - [Future Work and Improvements](#future-work-and-improvements)
   - [Suggested Enhancements](#suggested-enhancements)
   - [Alternative Designs](#alternative-designs)
@@ -1452,99 +1445,27 @@ width="\textwidth"></span>
 
 ## Potential Issues and Solutions
 
-During the development of our I2C communication project, we encountered
-several key challenges. Initially, both team members, Jagadeesh and
-Yasaswi, worked on building basic Verilog modules for the master and
-slave entities, capable of fundamental read and write functions.
-Starting with a review of the I2C protocol from online resources and
-Verilog syntax, we designed a preliminary testbench module. However, as
-the complexity of the project increased, so did the issues.
+In the development of the I2C communication project, I encountered several challenges, starting with the design of basic Verilog modules for both master and slave entities capable of fundamental read and write operations. After an initial review of the I2C protocol from various online resources and Verilog syntax, I designed a preliminary testbench module to simulate and validate the basic functionality.
 
-Yasaswi enhanced the protocol handling by introducing the ACK and NACK
-flags to manage incorrect slave addresses, as well as refining the
-finite state machine (FSM) logic for greater robustness. To make the
-slave module independent of global configurations, we collaboratively
-designed a top-level module that instantiated both the master and slave
-modules. This top-level module also verified the slave address, adding
-an extra layer of validation.
+As the project progressed, I introduced additional functionality, including ACK and NACK flags, to handle incorrect slave addresses and refined the finite state machine (FSM) logic for more reliable state transitions. To make the slave module independent of global configurations, I designed a top-level module that instantiated both the master and slave modules and added an extra layer of address validation.
 
-Jagadeesh focused on implementing clock stretching between address and
-data frames to synchronize data transfer. This feature functioned well
-during address transmissions but revealed discrepancies in the data
-frame during read operations. We continued troubleshooting this issue,
-which highlighted the limitations of our initial approach.
+For synchronization, I implemented clock stretching between address and data frames. This addition worked effectively during address transmission but revealed timing issues during data frame read operations. After extensive troubleshooting, I identified limitations in the initial approach and modified the design accordingly.
 
-Eventually, we attempted to implement a multi-master and multi-slave
-configuration, assigning slave addresses in the format 10101XY (with XY
-as 00, 01, 10, 11 for slaves 1 through 4) and using a single-bit master
-select line in the testbench to choose the master. Preloaded data in the
-slaves was structured as 110011XY to streamline read operations.
-However, the multi-master configuration still posed unresolved
-synchronization issues, so we scaled back to a single-master,
-single-slave model, excluding clock stretching and multiple nodes. Our
-final implementation focuses on single-point communication, while the
-initial code attempts and multi-master versions are provided in the
-appendix via a GitHub link.
+I also explored a multi-master, multi-slave configuration, assigning slave addresses in the format `10101XY` (with `XY` values as 00, 01, 10, and 11 for slaves 1 through 4) and a master select line in the testbench to choose the active master. Preloaded data in each slave was structured as `110011XY` to streamline read operations. However, unresolved synchronization issues in the multi-master setup led me to scale back to a single-master, single-slave model, excluding clock stretching and multiple nodes. The final design focuses on single-point communication, with code attempts for the multi-master setup included in the project appendix on GitHub.
 
 ## Risk Management
 
-Several potential risks arose during the design and integration phases
-of the project:
+Several potential risks emerged during the design and integration phases:
 
--   **Design Complexity**: The complexity of the I2C protocol and
-    multi-node configuration presented unforeseen design challenges. Our
-    approach to modular testing helped mitigate issues by allowing
-    iterative refinement.
+- **Design Complexity**: The complexity of the I2C protocol and multi-node configuration posed unforeseen design challenges. A modular testing approach mitigated these risks by allowing iterative refinements.
+  
+- **Timing Issues**: Timing mismatches, particularly in multi-master configurations, impacted protocol accuracy. While resolved in the single-master model, this remains an area for future improvement.
+  
+- **FSM Complexity**: Introducing ACK/NACK handling increased the complexity of the FSM, raising the potential for state transition errors. Comprehensive simulation and debugging minimized these risks.
 
--   **Timing Issues**: Timing mismatches in multi-master configurations
-    posed integration risks, affecting protocol accuracy. This issue is
-    partially resolved in the single-master model but remains a priority
-    for future improvements.
+In this project, I implemented the clock stretching functionality and addressed timing issues in data frame read operations. Starting with basic I2C modules, I managed the synchronization aspect by incorporating clock stretching between address and data frames, a mechanism crucial for addressing timing issues in the protocol. Despite progress, some discrepancies remain in the data frame during read operations, which are planned for future enhancements.
 
--   **FSM Complexity**: Adding ACK/NACK handling increased the FSM
-    complexity, raising the potential for state transition errors.
-    Comprehensive simulation and debugging were essential in minimizing
-    these risks.
-
-# Team Contributions and Work Distribution
-
-## Role of Each Team Member
-
-The project responsibilities were divided between Jagadeesh and Yasaswi,
-allowing us to make steady progress:
-
--   **Jagadeesh**: Focused on implementing clock stretching,
-    single-master synchronization, and troubleshooting data frame
-    discrepancies in read operations.
-
--   **Yasaswi**: Led the introduction of ACK/NACK mechanisms, FSM
-    refinement, and multi-node configuration efforts.
-
-## Individual Contributions
-
-### Jagadeesh's Contribution
-
-In this project, I focused on implementing the clock stretching
-functionality and troubleshooting timing issues in data frame read
-operations. Initially, we built basic I2C modules to handle simple data
-exchanges. As our understanding grew, I handled the synchronization
-aspect by incorporating clock stretching between address and data
-frames, a mechanism crucial for addressing timing issues in the
-protocol. Despite progress, some discrepancies remained in the data
-frame during read operations, which we plan to improve upon in future
-versions.
-
-### Yasaswi's Contribution
-
-My work on the project included implementing ACK/NACK flags to handle
-erroneous addresses, refining the FSM logic, and attempting a
-multi-master configuration. I expanded the basic modules by introducing
-acknowledgment and negative acknowledgment flags to manage address
-errors. The FSM adjustments aimed to improve state transitions and
-address protocol handling complexities. While we aimed to create a
-multi-master configuration with selectable slave nodes, unresolved
-timing issues led us to prioritize a single-master, single-slave model,
-which still reflects the critical elements of I2C communication.
+Additionally, I expanded the basic modules by introducing acknowledgment (ACK) and negative acknowledgment (NACK) flags to handle erroneous addresses. I refined the FSM logic to improve state transitions, address handling, and protocol management complexities. While the initial goal was a multi-master configuration with selectable slave nodes, unresolved timing issues led to a focus on a single-master, single-slave model, effectively capturing the core aspects of I2C communication in the final implementation.
 
 # Future Work and Improvements
 
