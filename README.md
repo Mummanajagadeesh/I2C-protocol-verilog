@@ -1,6 +1,11 @@
 <h1 align="center">Verilog Implementation of I2C Protocol</h1>
 
 
+<p align="center">
+  <strong>Project by:</strong><br>
+  <strong>Jagadeesh Mummana</strong> (B231113EC)<br>
+  <strong>Yasaswi Akkineni</strong> (B231347EC)<br>
+</p>
 
 <p align="center">
   Dr. <strong>Ashutosh Mishra</strong><br> 
@@ -8,17 +13,14 @@
   National Institute of Technology Calicut, Kerala, India
 </p>
 
----
 
 <p align="center">
-  <strong>Project by:</strong><br>
-  <strong>Jagadeesh Mummana</strong> (B231113EC)<br>
-  <strong>Yasaswi Akkineni</strong> (B231347EC)<br>
-  <br> <!-- Adds vertical space between names and department details -->
   Department of Electronics and Communication Engineering<br>
   Semester: III<br>
   Course: Elective - EC2024E Hardware Modelling using HDL
 </p>
+
+
 
 
 # Table of Contents
