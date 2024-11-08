@@ -1,6 +1,8 @@
 \documentclass[a4paper,12pt]{report}
 
 % Packages
+\usepackage{placeins}
+\usepackage{float}
 \usepackage{graphicx} % for including images
 \usepackage{amsmath} % for math symbols
 \usepackage{geometry} % to set page margins
@@ -1103,25 +1105,48 @@ endmodule
 \end{itemize}
 \newpage
 
+
 \chapter{Results}
-\begin{figure}[h!]
+
+\begin{figure}[H] % Use "H" for strict placement
     \centering
     \includegraphics[width=\textwidth]{TEST-CASE-1.jpg}
     \caption{Test Case 1}
 \end{figure}
-\begin{figure}[h!]
+\FloatBarrier % Enforce position before proceeding
+
+\noindent The waveform in this test shows the master sending an address 7'b0101010, which matches the slave’s configured address. Since the address matches, the slave acknowledges the communication by sending an ACK (acknowledgment) signal. After receiving the ACK, the master initiates a write operation, transmitting the data 8'b10101010 to the slave. The enable signal is set to initiate communication and deasserted after a delay, allowing the transmission to complete. The presence of the ACK in this waveform confirms that the address was successfully matched, allowing data transfer.
+
+\FloatBarrier
+
+\begin{figure}[H] % Use "H" for strict placement
     \centering
     \includegraphics[width=\textwidth]{TEST-CASE-2.jpg}
     \caption{Test Case 2}
 \end{figure}
+\FloatBarrier
 
-\begin{figure}[h!]
+\noindent In this test case, the master sends a non-matching address 7'b1111111, which does not correspond to the slave’s preset address. The waveform shows the absence of an acknowledgment signal (NACK) from the slave, indicating that the address verification failed and the data transfer cannot proceed. This NACK response is expected behavior when the slave does not recognize the transmitted address. The enable signal initiates the communication, but with no matching address and no ACK received, data transfer is not established.
+
+\FloatBarrier
+
+\newpage 
+
+\begin{figure}[H] % Use "H" for strict placement
     \centering
     \includegraphics[width=\textwidth]{TEST-CASE-3.jpg}
     \caption{Test Case 3}
 \end{figure}
+\FloatBarrier
+
+\noindent The final waveform demonstrates a read operation with the master sending a matching address 7'b0101010. Upon recognizing the address, the slave responds with an ACK signal, confirming the communication link. Following the acknowledgment, the master initiates a read operation, and the slave provides the preloaded data 8'b11001100 to the master. The enable signal triggers the start of communication and is deasserted after a delay, allowing the master to read the data. This successful transmission and receipt of data verify correct read functionality with an address match.
+
+
 \newpage
+
 \chapter{Challenges and Risk Analysis}
+
+The final waveform demonstrates a read operation with the master sending a matching address 7'b0101010. Upon recognizing the address, the slave responds with an ACK signal, confirming the communication link. Following the acknowledgment, the master initiates a read operation, and the slave provides the preloaded data 8'b11001100 to the master. The enable signal triggers the start of communication and is deasserted after a delay, allowing the master to read the data. This successful transmission and receipt of data verify correct read functionality with an address match.
 
 \section{Potential Issues and Solutions}
 During the development of our I2C communication project, we encountered several key challenges. Initially, both team members, Jagadeesh and Yasaswi, worked on building basic Verilog modules for the master and slave entities, capable of fundamental read and write functions. Starting with a review of the I2C protocol from online resources and Verilog syntax, we designed a preliminary testbench module. However, as the complexity of the project increased, so did the issues.
@@ -1134,7 +1159,7 @@ Yasaswi enhanced the protocol handling by introducing the ACK and NACK flags to 
 
 Jagadeesh focused on implementing clock stretching between address and data frames to synchronize data transfer. This feature functioned well during address transmissions but revealed discrepancies in the data frame during read operations. We continued troubleshooting this issue, which highlighted the limitations of our initial approach.
 
-\vspace{0.5in}
+\vspace{0.75in}
 
 Eventually, we attempted to implement a multi-master and multi-slave configuration, assigning slave addresses in the format 10101XY (with XY as 00, 01, 10, 11 for slaves 1 through 4) and using a single-bit master select line in the testbench to choose the master. Preloaded data in the slaves was structured as 110011XY to streamline read operations. However, the multi-master configuration still posed unresolved synchronization issues, so we scaled back to a single-master, single-slave model, excluding clock stretching and multiple nodes. Our final implementation focuses on single-point communication, while the initial code attempts and multi-master versions are provided in the appendix via a GitHub link.
 \newpage
