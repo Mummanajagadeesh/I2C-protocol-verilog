@@ -1539,6 +1539,7 @@ This project implements the I2C protocol in Verilog with various versions and co
 - **Features**:
   - Basic I2C communication between a single master and slave.
   - No handling of clock stretching; both master and slave devices operate with the same clock frequency.
+  - NACK will be raised indicating that the given address for slave is wrong.
 
 ## v2.0.3 - Clock Stretching with Fixed Master Delay
 - **Description**: This version adds support for clock stretching. The master introduces a fixed delay after sending each data frame, and the SCL line will be held low (clock stretching) while waiting for the slave.
