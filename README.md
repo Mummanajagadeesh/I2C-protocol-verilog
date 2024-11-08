@@ -144,8 +144,6 @@ design.
 
 ## Intro to Inter-Integrated Circuit Protocol
 
-### Comparison with Other Communication Protocols
-
 ### Industrial Applications of I2C Protocol
 
 The Inter-Integrated Circuit (I2C) protocol is a widely used serial
@@ -244,6 +242,8 @@ a reliable and cost-effective solution for modern industrial automation
 and monitoring. To understand the advantages of communicating over I2C,
 it's essential to compare it with other available options, particularly
 **UART** and **SPI**.
+
+### Comparison with Other Communication Protocols
 
 **Limitations of Serial UART Ports:** Serial UART ports are
 asynchronous, meaning they do not transmit clock data alongside the
