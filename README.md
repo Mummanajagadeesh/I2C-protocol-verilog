@@ -20,6 +20,45 @@
   Course: Elective - EC2024E Hardware Modelling using HDL
 </p>
 
+---
+
+<br><br><br>
+
+This project implements the I2C protocol in Verilog with various versions and configurations. Below is a summary of each version:
+
+## v1.0.2 - Simple Master-Slave (No Clock Stretching)
+- **Description**: This version implements a simple I2C protocol with one master and one slave device. It does not support clock stretching.
+- **Features**:
+  - Basic I2C communication between a single master and slave.
+  - No handling of clock stretching; both master and slave devices operate with the same clock frequency.
+  - NACK will be raised indicating that the given address for slave is wrong.
+
+## v2.0.3 - Clock Stretching with Fixed Master Delay
+- **Description**: This version adds support for clock stretching. The master introduces a fixed delay after sending each data frame, and the SCL line will be held low (clock stretching) while waiting for the slave.
+- **Features**:
+  - Clock stretching is supported for managing communication timing.
+  - The master introduces a fixed delay to simulate real-world clock stretching scenarios.
+
+## v2.0.4 - Clock Stretching with Configurable Master Delay
+- **Description**: This version builds on v2.0.3 by adding a configurable delay from the testbench. The delay allows adjusting the time period that the SCL line waits, providing greater flexibility.
+- **Features**:
+  - Configurable master delay, adjustable from the testbench.
+  - SCL waiting period comparison between the master and slave devices.
+  - Enhanced clock stretching handling with configurable delays.
+
+## v3.0.1 - Multi-Slave Single Master Configuration
+- **Description**: This version introduces a configuration with a single master and multiple slave devices. The master can communicate with any of the slaves, supporting multi-slave communication.
+- **Features**:
+  - One master can communicate with multiple slaves.
+  - The master can address and select any slave for communication.
+  - Basic multi-slave handling without clock stretching.
+
+## v3.1.1 - Multi-Slave Multi-Master Configuration
+- **Description**: The latest version supports a multi-master, multi-slave configuration, where both the master and slaves can initiate communication. It adds complexity to handle multiple devices that can take control of the bus.
+- **Features**:
+  - Multiple masters can communicate with multiple slaves.
+  - Advanced bus arbitration is implemented to handle multiple masters trying to access the bus at the same time.
+  - Suitable for complex systems requiring both multiple masters and multiple slaves.
 
 
 
@@ -1528,43 +1567,4 @@ resources. All images are copyrighted by their respective owners; no
 ownership rights are claimed.
 
 
-
-
-
-
-This project implements the I2C protocol in Verilog with various versions and configurations. Below is a summary of each version:
-
-## v1.0.2 - Simple Master-Slave (No Clock Stretching)
-- **Description**: This version implements a simple I2C protocol with one master and one slave device. It does not support clock stretching.
-- **Features**:
-  - Basic I2C communication between a single master and slave.
-  - No handling of clock stretching; both master and slave devices operate with the same clock frequency.
-  - NACK will be raised indicating that the given address for slave is wrong.
-
-## v2.0.3 - Clock Stretching with Fixed Master Delay
-- **Description**: This version adds support for clock stretching. The master introduces a fixed delay after sending each data frame, and the SCL line will be held low (clock stretching) while waiting for the slave.
-- **Features**:
-  - Clock stretching is supported for managing communication timing.
-  - The master introduces a fixed delay to simulate real-world clock stretching scenarios.
-
-## v2.0.4 - Clock Stretching with Configurable Master Delay
-- **Description**: This version builds on v2.0.3 by adding a configurable delay from the testbench. The delay allows adjusting the time period that the SCL line waits, providing greater flexibility.
-- **Features**:
-  - Configurable master delay, adjustable from the testbench.
-  - SCL waiting period comparison between the master and slave devices.
-  - Enhanced clock stretching handling with configurable delays.
-
-## v3.0.1 - Multi-Slave Single Master Configuration
-- **Description**: This version introduces a configuration with a single master and multiple slave devices. The master can communicate with any of the slaves, supporting multi-slave communication.
-- **Features**:
-  - One master can communicate with multiple slaves.
-  - The master can address and select any slave for communication.
-  - Basic multi-slave handling without clock stretching.
-
-## v3.1.1 - Multi-Slave Multi-Master Configuration
-- **Description**: The latest version supports a multi-master, multi-slave configuration, where both the master and slaves can initiate communication. It adds complexity to handle multiple devices that can take control of the bus.
-- **Features**:
-  - Multiple masters can communicate with multiple slaves.
-  - Advanced bus arbitration is implemented to handle multiple masters trying to access the bus at the same time.
-  - Suitable for complex systems requiring both multiple masters and multiple slaves.
 
